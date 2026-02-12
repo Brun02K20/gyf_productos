@@ -40,6 +40,16 @@ Levantar el entorno completo:
 docker compose up -d --build
 ```
 
+Para acceder al frontend ingrese la siguiente url: 
+```bash
+http://localhost:3000
+```
+
+Para acceder al backend ingrese la siguiente url: 
+```bash
+http://localhost:5000/swagger
+```
+
 ## 2. Variables de entorno
 
 Si bien una buena práctica es no subir las variables de entorno al repositorio, para agilizar el envío y evaluación de esta prueba técnica se decidió incluir las variables necesarias tanto para el frontend como para el backend.
