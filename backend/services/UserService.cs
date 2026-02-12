@@ -10,10 +10,11 @@ public sealed class UserService
 {
     private readonly AppDbContext _db;
     private readonly JwtTokenService _jwtTokenService;
-    public UserService(AppDbContext db)
+
+    public UserService(AppDbContext db, JwtTokenService jwtTokenService)
     {
         _db = db;
-        _jwtTokenService = new JwtTokenService(null!);
+        _jwtTokenService = jwtTokenService;
     }
 
     public Task<List<Users>> GetAllAsync()

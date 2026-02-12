@@ -1,7 +1,6 @@
 using backend.Database;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
-using backend.Dtos.Users;
 using backend.Errors;
 using backend.Dtos.Products;
 
@@ -12,10 +11,10 @@ public sealed class ProductService
     private readonly AppDbContext _db;
     private readonly JwtTokenService _jwtTokenService;
 
-    public ProductService(AppDbContext db)
+    public ProductService(AppDbContext db, JwtTokenService jwtTokenService)
     {
         _db = db;
-        _jwtTokenService = new JwtTokenService(null!);
+        _jwtTokenService = jwtTokenService;
     }
 
     public async Task<List<ProductDto>> GetAllAsync()
