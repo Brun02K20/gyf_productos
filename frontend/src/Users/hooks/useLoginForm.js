@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const useLoginForm = (type) => {
     const { login } = useAuth();
-    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
@@ -18,10 +18,19 @@ const useLoginForm = (type) => {
                 userOnlineData = await loginServices.register(data);
             }
 
+            if (userOnlineData?.networkError) {
+                setErrorMessage(userOnlineData.message || "Oops, ha ocurrido un error inesperado");
+                return;
+            }
+
             if (userOnlineData?.code == 401) {
-                setError(true);
+                const message =
+                    type === "login"
+                        ? "Error: El username o contraseña son incorrectos"
+                        : "Error al registrar. Por favor, verifica tus datos e intenta nuevamente.";
+                setErrorMessage(message);
             } else {
-                setError(false);
+                setErrorMessage("");
                 if (type == "register") {
                     navigate("/");
                 } else if (type == "login") {
@@ -30,14 +39,14 @@ const useLoginForm = (type) => {
                 }
             }
         } catch (err) {
-            setError(true);
+            setErrorMessage("Oops, ha ocurrido un error inesperado");
         }
     };
 
     return {
         onSubmit,
-        error,
-        setError,
+        errorMessage,
+        setErrorMessage,
     };
 };
 

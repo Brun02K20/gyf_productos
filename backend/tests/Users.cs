@@ -86,20 +86,6 @@ public sealed class UserControllerTests : IDisposable
     }
 
     [Fact]
-    public async Task GetAllUsers_returns_list()
-    {
-        SeedUser("ana", "secret");
-        SeedUser("luis", "pass");
-
-        var result = await _controller.GetAllUsers();
-
-        var ok = Assert.IsType<OkObjectResult>(result.Result);
-        var users = Assert.IsAssignableFrom<List<Users>>(ok.Value);
-
-        Assert.Equal(2, users.Count);
-    }
-
-    [Fact]
     public async Task Login_invalid_password_throws_unauthorized()
     {
         SeedUser("ana", "secret");

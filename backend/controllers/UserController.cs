@@ -29,13 +29,4 @@ public sealed class UserController : ControllerBase
         var response = await _users.LoginAsync(request);
         return Ok(response);
     }
-
-    // endpoint de prueba para listar usuarios, se puede eliminar después
-    [Authorize]
-    [HttpGet("")]
-    public async Task<ActionResult<List<Users>>> GetAllUsers()
-    {
-        var users = await _users.GetAllAsync();
-        return Ok(users);
-    }
 }

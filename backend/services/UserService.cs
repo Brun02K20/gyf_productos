@@ -17,11 +17,6 @@ public sealed class UserService
         _jwtTokenService = jwtTokenService;
     }
 
-    public Task<List<Users>> GetAllAsync()
-    {
-        return _db.Users.AsNoTracking().ToListAsync();
-    }
-
     public async Task<LoginUser> LoginAsync(UserCredentials credentials)
     {
         try

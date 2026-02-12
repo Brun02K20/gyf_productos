@@ -8,35 +8,35 @@ const  Register = () => {
         handleSubmit,
     } = useForm();
 
-    const { onSubmit, error, setError } = useLoginForm("register");
+    const { onSubmit, errorMessage, setErrorMessage } = useLoginForm("register");
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-indigo-200 p-8 space-y-6">
           {/* Header */}
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900">Bienvenido</h1>
-            <p className="text-gray-500 text-sm mt-2">Crea tu cuenta</p>
+            <h1 className="text-3xl font-bold bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Bienvenido</h1>
+            <p className="text-indigo-600/70 text-sm mt-2">Crea tu cuenta</p>
           </div>
 
           {/* Form */}
           <form id="register-htmlForm" onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             {/* Username Input */}
             <div className="space-y-2">
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="username" className="block text-sm font-medium text-indigo-700">
                 Nombre de Usuario
               </label>
               <input
                 type="text"
                 id="username"
                 placeholder="tu_usuario"
-                {...register("username", { required: true, onChange: () => setError(false) })}
+                {...register("username", { required: true, onChange: () => setErrorMessage("") })}
                 className={`w-full px-4 py-2.5 rounded-lg border transition-colors ${
                   errors.username
                     ? 'border-red-400 bg-red-50 focus:ring-2 focus:ring-red-200'
-                    : 'border-gray-200 bg-gray-50 focus:border-transparent focus:ring-2 focus:ring-blue-500'
-                } outline-none text-gray-900 placeholder-gray-400 shadow-sm`}
+                    : 'border-indigo-200 bg-white focus:border-transparent focus:ring-2 focus:ring-indigo-500'
+                } outline-none text-gray-900 placeholder-indigo-400 shadow-sm`}
               />
               {errors.username && (
                 <p className="text-xs font-medium text-red-600">
@@ -47,14 +47,14 @@ const  Register = () => {
 
             {/* Password Input */}
             <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-indigo-700">
                 Contraseña
               </label>
               <input
                 type="password"
                 id="password"
                 placeholder="••••••••"
-                onChange={() => setError(false)}
+                onChange={() => setErrorMessage("")}
                 {...register("password", {
                   required: {
                     value: true,
@@ -68,13 +68,13 @@ const  Register = () => {
                     value: 15,
                     message: "El password debe tener máximo 15 caracteres",
                   },
-                  onChange: () => setError(false)
+                  onChange: () => setErrorMessage("")
                 })}
                 className={`w-full px-4 py-2.5 rounded-lg border transition-colors ${
                   errors.password
                     ? 'border-red-400 bg-red-50 focus:ring-2 focus:ring-red-200'
-                    : 'border-gray-200 bg-gray-50 focus:border-transparent focus:ring-2 focus:ring-blue-500'
-                } outline-none text-gray-900 placeholder-gray-400 shadow-sm`}
+                    : 'border-indigo-200 bg-white focus:border-transparent focus:ring-2 focus:ring-indigo-500'
+                } outline-none text-gray-900 placeholder-indigo-400 shadow-sm`}
               />
               {errors.password && (
                 <p className="text-xs font-medium text-red-600">
@@ -84,10 +84,10 @@ const  Register = () => {
             </div>
 
             {/* Error Message */}
-            {error && (
+            {errorMessage && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-3 shadow-sm">
                 <p className="text-sm font-medium text-red-700">
-                  Error al registrar. Por favor, verifica tus datos e intenta nuevamente.
+                  {errorMessage}
                 </p>
               </div>
             )}
@@ -95,7 +95,7 @@ const  Register = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+              className="w-full bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-2.5 rounded-lg transition-all duration-300 shadow-lg shadow-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/60 hover:scale-105 cursor-pointer"
             >
               Registrarse
             </button>
@@ -112,9 +112,9 @@ const  Register = () => {
           </div>
 
           {/* Sign Up Link */}
-          <p className="text-center text-sm text-gray-600">
+          <p className="text-center text-sm text-indigo-600/70">
             ¿Ya tienes cuenta?{" "}
-            <a href="/" className="font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+            <a href="/" className="font-semibold text-indigo-600 hover:text-purple-600 transition-colors">
               Inicia sesión aquí
             </a>
           </p>
