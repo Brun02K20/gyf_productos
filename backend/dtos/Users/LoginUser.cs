@@ -24,6 +24,7 @@ public class LoginUser
     [DefaultValue(2)] // Valor por defecto para Swagger, no afecta la validación real
     public int Id { get; set; }
     [SwaggerSchema(Description = "Token de usuario autenticado")]
+    [DefaultValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwibmFtZSI6IkJydW5vIiwiaWF0IjoxNjg4ODQyODkxfQ.2sH8n7l3")] // Valor por defecto para Swagger, no afecta la validación real
     public string Token { get; set; } = string.Empty;
 
     [SwaggerSchema(Description = "Nombre de usuario autenticado")]
@@ -33,11 +34,17 @@ public class LoginUser
 
 public class RegisterUser
 {
-    public int Id { get; set; } = 0;
+    [SwaggerSchema(Description = "ID del usuario registrado")]
+    [DefaultValue(1)] // Valor por defecto para Swagger, no afecta la validación real
+    public int Id { get; set; } = 1;
 
     [Required]
+    [SwaggerSchema(Description = "Nombre de usuario registrado")]
+    [DefaultValue("Bruno")] // Valor por defecto para Swagger, no afecta la validación real
     public string Username { get; set; } = string.Empty;
 
     [Required]
+    [SwaggerSchema(Description = "Contraseña para el usuario registrado")]
+    [DefaultValue("2shasdlifjsdakjghskdfjghdfkjsghdjskflghdskfghdkjsfghdkfghdkfghdfkghdfkg")] // Valor por defecto para Swagger, no afecta la validación real
     public string Password { get; set; } = string.Empty;
 }
