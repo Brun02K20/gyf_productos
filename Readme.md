@@ -2,14 +2,14 @@
 
 ## Índice
 
-1. [Cómo correr el programa](#cómo-correr-el-programa)  
-2. [Variables de entorno](#variables-de-entorno)  
-3. [Cómo ejecutar unit tests](#cómo-ejecutar-unit-tests)  
-4. [Estructura del proyecto](#estructura-del-proyecto)  
-5. [Modelado de datos](#modelado-de-datos)  
-6. [Arquitectura](#arquitectura)  
-7. [Documentación de API](#documentacion-de-api)  
-8. [Decisiones técnicas](#decisiones-técnicas)  
+1. [Cómo correr el programa](#1-cómo-correr-el-programa)  
+2. [Variables de entorno](#2-variables-de-entorno)  
+3. [Cómo ejecutar unit tests](#3-cómo-ejecutar-unit-tests)  
+4. [Estructura del proyecto](#4-estructura-del-proyecto)  
+5. [Modelado de datos](#5-modelado-de-datos)  
+6. [Arquitectura](#6-arquitectura)  
+7. [Documentación de API](#7-documentación-de-api)  
+8. [Decisiones técnicas](#8-decisiones-técnicas)  
 
 ---
 
