@@ -19,6 +19,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 20s
+    networks:
+      - backend-db
 
   api:
     build: ./backend
@@ -33,6 +35,27 @@ services:
     depends_on:
       sqlserver:
         condition: service_healthy
+    networks:
+      - backend-db
+      - frontend-backend
+
+  frontend:
+    build: ./frontend
+    container_name: gyf_frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env
+    depends_on:
+      - api
+    networks:
+      - frontend-backend
 
 volumes:
   mssql_data:
+
+networks:
+  backend-db:
+    driver: bridge
+  frontend-backend:
+    driver: bridge

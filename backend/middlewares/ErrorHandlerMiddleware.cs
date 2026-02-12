@@ -30,6 +30,12 @@ public class ErrorHandlerMiddleware
 
     private static Task WriteErrorResponseAsync(HttpContext context, Exception exception)
     {
+        // Si la respuesta ya comenzó, no podemos cambiar headers ni status code
+        if (context.Response.HasStarted)
+        {
+            return Task.CompletedTask;
+        }
+
         if (exception is HTTPError httpError)
         {
             var payload = JsonSerializer.Serialize(new { code = httpError.Status, message = httpError.Message });
