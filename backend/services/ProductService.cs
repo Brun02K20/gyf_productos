@@ -242,9 +242,6 @@ public sealed class ProductService
                 currentCombination.RemoveAt(currentCombination.Count - 1);
             }
         }
-
-        // También probar NO seleccionar ningún producto de esta categoría
-        FindBestCombination(categoryIndex + 1, currentCombination, currentTotal);
     }
 
     FindBestCombination(0, new List<ProductDto>(), 0);
