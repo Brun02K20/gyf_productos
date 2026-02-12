@@ -23,12 +23,19 @@ const useLoginForm = (type) => {
                 return;
             }
 
-            if (userOnlineData?.code == 401) {
-                const message =
-                    type === "login"
-                        ? "Error: El username o contraseña son incorrectos"
-                        : "Error al registrar. Por favor, verifica tus datos e intenta nuevamente.";
-                setErrorMessage(message);
+            // Manejar errores por código
+            if (userOnlineData?.code) {
+                if (userOnlineData.code === 401) {
+                    const message =
+                        type === "login"
+                            ? "Error: El username o contraseña son incorrectos"
+                            : "Error al registrar. Por favor, verifica tus datos e intenta nuevamente.";
+                    setErrorMessage(message);
+                } else if (userOnlineData.code === 409 && type === "register") {
+                    setErrorMessage("Este usuario ya está registrado. Ya puedes iniciar sesión.");
+                } else {
+                    setErrorMessage(userOnlineData.message || "Oops, ha ocurrido un error inesperado");
+                }
             } else {
                 setErrorMessage("");
                 if (type == "register") {
