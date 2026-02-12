@@ -10,6 +10,7 @@
 6. [Arquitectura](#6-arquitectura)  
 7. [Documentación de API](#7-documentación-de-api)  
 8. [Decisiones técnicas](#8-decisiones-técnicas)  
+9. [Decisiones UX/UI](#9-decisiones-uxui) 
 
 ---
 
@@ -92,7 +93,7 @@ Además:
 * Esto permite conservar la información incluso si los contenedores se reinician.
 * También facilita la extracción de datos desde el contenedor hacia el host si fuese necesario.
 
-### 7. Documentación de API
+## 7. Documentación de API
 
 Se documentó la API a través de la herramienta Swagger, para acceder a la misma primero levante el proyecto, posteriormente ingrese al navegador de su preferencia e ingrese la siguiente url: 
 
@@ -126,3 +127,16 @@ Se utilizó el patrón de diseño DTO (Data Transfer Object) para:
 Se utilizó Docker Compose para orquestar: Frontend; Backend; Base de datos
 
 Esto permite levantar todo el aplicativo con un solo comando, facilitando la evaluación y ejecución del challenge.
+
+## 9. Decisiones UX/UI
+
+### Registro de Usuarios
+
+Se realizó un endpoint y pantalla adicionales para el registro de usuarios, permitiendo incrementar el catálogo de los mismos
+
+### Unificación de Pantallas de ABM de productos y de Consulta por precio
+
+Para incrementar la experiencia de usuario, así no tiene que navegar en 2 pantallas con la misma temática, también, se realizaron modales para la creación, actualización, y eliminación de productos
+
+
+
