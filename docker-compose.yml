@@ -1,0 +1,38 @@
+services:
+  sqlserver:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.sqlserver
+    image: gyf_sqlserver
+    container_name: mssql_db
+    environment:
+      SA_PASSWORD: "TuPassword123!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-C", "-S", "localhost", "-U", "sa", "-P", "TuPassword123!", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  api:
+    build: ./backend
+    container_name: crud_api
+    ports:
+      - "5000:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=MiBaseDeDatos;User Id=sa;Password=TuPassword123!;TrustServerCertificate=True
+      - JWT_ISSUER=gyf-api
+      - JWT_AUDIENCE=gyf-client
+      - JWT_SECRET=CAMBIA_ESTO_POR_UN_SECRETO_LARGO
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+
+volumes:
+  mssql_data:

@@ -1,0 +1,9 @@
+FROM mcr.microsoft.com/mssql/server:2022-latest
+
+WORKDIR /init
+COPY database/init.sql /init/init.sql
+COPY --chmod=755 database/entrypoint.sh /init/entrypoint.sh
+
+ENV ACCEPT_EULA=Y
+
+ENTRYPOINT ["/init/entrypoint.sh"]
