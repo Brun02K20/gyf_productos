@@ -1,8 +1,8 @@
-using backend.Database;
-using backend.Models;
 using Microsoft.EntityFrameworkCore;
 using backend.Errors;
 using backend.Dtos.Products;
+using backend.Database;
+using backend.Models;
 
 namespace backend.Services;
 

@@ -1,10 +1,8 @@
-using backend.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using backend.Dtos.Users;
 using backend.Models;
-using backend.Middleware;
-using Microsoft.AspNetCore.Authorization;
-
+using backend.Services;
 namespace backend.Controllers;
 
 [ApiController]
@@ -32,7 +30,7 @@ public sealed class UserController : ControllerBase
         return Ok(response);
     }
 
-    // endpoint de prueba para listar usuarios (no en producción)
+    // endpoint de prueba para listar usuarios, se puede eliminar después
     [Authorize]
     [HttpGet("")]
     public async Task<ActionResult<List<Users>>> GetAllUsers()

@@ -1,4 +1,3 @@
-// DTO con id y token para el login
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Swashbuckle.AspNetCore.Annotations;

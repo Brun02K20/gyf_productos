@@ -1,10 +1,7 @@
-using backend.Services;
 using Microsoft.AspNetCore.Mvc;
-using backend.Dtos.Users;
-using backend.Models;
-using backend.Middleware;
 using Microsoft.AspNetCore.Authorization;
 using backend.Dtos.Products;
+using backend.Services;
 
 namespace backend.Controllers;
 

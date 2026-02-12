@@ -1,6 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using backend.Database;
 using backend.Models;
-using Microsoft.EntityFrameworkCore;
 using backend.Dtos.Users;
 using backend.Errors;
 
